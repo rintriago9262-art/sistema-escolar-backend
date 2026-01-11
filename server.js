@@ -4,7 +4,17 @@ import cors from "cors";
 import { pool } from "./db.js";
 
 const app = express();
-app.use(cors());
+
+// Configuración de CORS para permitir tu frontend de Vercel
+app.use(cors({
+  origin: [
+    'http://localhost:5173',
+    'http://localhost:3000',
+    'https://sistema-escolar-frontend-tau.vercel.app'  // ← Tu URL de Vercel
+  ],
+  credentials: true
+}));
+
 app.use(express.json());
 
 // =====================
